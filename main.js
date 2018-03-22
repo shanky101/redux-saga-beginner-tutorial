@@ -5,16 +5,16 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import Counter from './Counter'
-import reducer from './reducers'
-import { helloSaga } from './sagas';
+import Counter from './Counter';
+import reducer from './reducers';
+import rootSaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
   applyMiddleware(sagaMiddleware)
 );
-sagaMiddleware.run(helloSaga);
+sagaMiddleware.run(rootSaga);
 
 const action = type => store.dispatch({type});
 
